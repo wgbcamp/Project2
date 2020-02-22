@@ -22,8 +22,16 @@
 ​
 ## Technologies Used
 ​
+* Handlebars
+
+* Express
+
+* Node.js
+
 * SQL
 
 * Javascript
 
 * HTML, CSS
+
+* Deployed on Heroku and using JawsDB
