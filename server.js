@@ -1,9 +1,10 @@
-// Require express
-const express = require("express");
 // Setup Handlebars
 var exphbs = require("express-handlebars");
 
-// Setup express+HB
+// require dependencies
+var express = require("express");
+
+// Sets up the Express App
 var app = express();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
