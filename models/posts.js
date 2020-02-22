@@ -31,6 +31,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        Posts.hasMany(models.Votes, {
+            onDelete: "cascade"
+        });
       };
       
 

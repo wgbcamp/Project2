@@ -12,17 +12,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
-      };
-    Votes.associate = function(models) {
-        // We're saying that a Vote should also belong to a User
-        // A Vote can't be created without a User due to the foreign key constraint
-        Votes.belongsTo(models.Users, {
-          foreignKey: {
+        Votes.belongsTo(models.Users,{
+            foreignKey:{
             allowNull: false
-          }
+            }
         });
       };
-
     return Votes;
   };
   
