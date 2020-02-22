@@ -1,5 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Posts = sequelize.define("Posts", {
+      title: { 
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      }, 
       text: {
         type: DataTypes.TEXT,
         allowNull: false,
