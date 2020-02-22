@@ -10,7 +10,6 @@ module.exports = function(app) {
             };
             res.render("index", FrontPagePosts);
           });
-      res.render(path.join(__dirname, "../public/blog.html"));
     });
   
   
