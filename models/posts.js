@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Posts = sequelize.define("Posts", {
-      text: {
+      title: { 
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      noOfVotes: {
+      totalVotes: {
         type: DataTypes.INTEGER,
         defaultValue: 0
       },
@@ -31,10 +31,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
-        Posts.hasMany(models.Votes, {
+        Posts.hasMany(models.Captions, {
             onDelete: "cascade"
         });
       };
+      // Let's not associate this table with votes
+      // Let's just calculate the votes by adding up the total caption votes of a post in frontend javascript
       
 
     

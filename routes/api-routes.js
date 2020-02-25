@@ -1,16 +1,16 @@
-var db = require("../models")
+// var db = require("../models")
 
-module.exports = function(app) {
+// module.exports = function(app) {
 
 
-    app.get("/", function(req, res) {
-        // Set posts variable = data in the table
-        // Maybe reset certain obj keys, as in 'captions.all where votes = highest' and set that as TopPost
-        db.Posts.findAll({}).then(function(data) {
+//     app.get("/", function(req, res) {
+//         // Set posts variable = data in the table
+//         // Maybe reset certain obj keys, as in 'captions.all where votes = highest' and set that as TopPost
+//         db.Posts.findAll({}).then(function(data) {
           
-            res.render("index", data);
-          });
-    });
+//             res.render("index", data.text);
+//           });
+//     });
   
-  };
+//   };
   
