@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
           }
         });
         Captions.belongsTo(models.Users, {
-            foriengKey: {
+            foreignKey: {
                 allowNull: false
             }
         });
