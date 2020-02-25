@@ -1,8 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Votes = sequelize.define("Votes", {
-        
-    
-
+      
     });
     Votes.associate = function(models) {
         // We're saying that a Vote should belong to a Post
@@ -17,7 +15,15 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
             }
         });
+        Votes.belongsTo(models.Captions,{
+          foreignKey:{
+            allowNull: false
+          }
+        })
       };
     return Votes;
   };
   
+
+  // So basically, this table kind of 'inner joins' the other tables by their foreign keys.
+  // Any time we vote it'll add the Post id, User id, and Caption id to this table 
