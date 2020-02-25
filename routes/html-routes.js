@@ -1,15 +1,59 @@
 var db = require("../models")
 
-module.exports = function(app) {
+module.exports = function (app) {
 
+  // Create Account Page
+  app.get("/newUser", function (req, res) {
+    res.render("newUser")
+  });
 
-    app.get("/", function(req, res) {
-        // Set posts variable = data in the table
-        // Maybe reset certain obj keys, as in 'captions.all where votes = highest' and set that as TopPost
-        db.Posts.findAll({}).then(function(data) {
-            var dataObject = data
-            console.log(dataObject);
-            res.render("index", dataObject);
-          });
-        })
-    }
+  // Login page
+  app.get("/login", function (req, res) {
+    res.render("login")
+  })
+
+  // Account page will render a single user's profile
+  app.get("/account/:username", function (req, res) {
+    db.Users.findOne({
+      where: {
+        username: req.params.username
+      }
+    }).then(user => {
+      // Render the 'account' view with the single user passed in
+      res.render("account", { user })
+    })
+  });
+
+  // New Post Page
+  app.get("/newPost", function (req, res) {
+    res.render("newPost")
+  });
+
+  // Page to view a single post
+  app.get("/posts/:id", function (req, res) {
+    db.Posts.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(post => {
+      // Render the 'onePost' view with the single post passed in
+      res.render("onePost", { post })
+    })
+  });
+
+  // Posts page will render all posts  -----------!! We will have to change this to an inner join to get posts and captions
+  app.get("/", function (req, res) {
+    db.Posts.findAll().then(posts => {
+      // Render the 'allPosts' view with posts passed in as an object (handlebars reads the object/keys)
+      res.render("allPosts", { posts });
+      // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
+      // but the actual object can just be "posts"
+    });
+  });
+
+  // Index page will be a homepage with a login button
+  app.get("/", function (req, res) {
+    res.render("welcome")
+  })
+
+}
