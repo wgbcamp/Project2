@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         defaultValue: 0
       },
-      voter: {
+      author: {
         type: DataTypes.STRING,
         allowNull: false
       }

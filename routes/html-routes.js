@@ -34,18 +34,23 @@ module.exports = function (app) {
     db.Posts.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.Captions]
     }).then(post => {
       // Render the 'onePost' view with the single post passed in
       res.render("onePost", { post })
+      console.log(post)
     })
   });
 
   // Posts page will render all posts  -----------!! We will have to change this to an inner join to get posts and captions
   app.get("/", function (req, res) {
-    db.Posts.findAll().then(posts => {
+  db.Posts.findAll({
+     include: [db.Captions]})
+    .then(posts => {
       // Render the 'allPosts' view with posts passed in as an object (handlebars reads the object/keys)
       res.render("allPosts", { posts });
+      console.log(  posts[0].dataValues.Captions[0].dataValues )
       // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
       // but the actual object can just be "posts"
     });
