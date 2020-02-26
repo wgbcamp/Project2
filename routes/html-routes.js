@@ -3,8 +3,8 @@ var db = require("../models")
 module.exports = function (app) {
 
   // Create Account Page
-  app.get("/newUser", function (req, res) {
-    res.render("newUser")
+  app.get("/register", function (req, res) {
+    res.render("register")
   });
 
   // Login page
