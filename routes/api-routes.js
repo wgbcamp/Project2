@@ -1,25 +1,28 @@
 var db = require("../models")
+const bcrypt = require("bcryptjs")
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-    app.post("/api/register", function(req, res) {
+    app.post("/api/register", function (req, res) {
         console.log(req.body)
         // Bring in the reqs so that we can do some checks here (we could move this to another file later)
         const { username, password, password2 } = req.body;
         let errors = [];
         // Check that fields are filled
         if (!username || !password || !password2) {
-            errors.push({ msg: 'please fill in all fields'})
+            errors.push({ msg: 'please fill in all fields' })
         };
         // Check that password match
         if (password !== password2) {
-            errors.push({ msg: 'Password must match!'})
+            errors.push({ msg: 'Password must match!' })
         };
         // Check password length
         if (password.length < 6) {
-            errors.push({ msg: 'Password must contain at least 6 characters'})
+            errors.push({ msg: 'Password must contain at least 6 characters' })
         };
         // If there are errors, send back the errors and username
+        // This is useless for now, but we can add a partials folder with an 'errors' file inside and call that on the register page
+        // We can pass the object from this res.render to show those error messages above on the page when a user makes an error
         if (errors.length > 0) {
             res.render("register", {
                 errors,
@@ -27,19 +30,36 @@ module.exports = function(app) {
             });
             // Otherwise log success and create a new row on the users table
         } else {
-            console.log("success")
-            db.Users.create({
-                username,
-                password 
-            }).then(function() {
-                res.render("login")
-            })
-        }; 
-    });
-  };
-  
+            // Check if the username exists
+            db.Users.findOne({
+                where: {
+                    username
+                }
+            }).then(function (user) {
+                if (user) {
+                    errors.push({ msg: 'This username already exists' })
+                }
+                else {
+                    // Password encryption
+                    bcrypt.genSalt(10, function (err, salt) {
+                        bcrypt.hash(password, salt, function (err, hash) {
+                            if (err) throw err;
+                            db.Users.create({
+                                username,
+                                password: hash
+                            }).then(function () {
+                                // Send the user to the login page
+                                res.render("login")
+                            })
+                        })
+                    })
+                };
+            });
+        };
+    })
+}
 
-//   Still need:
+// Still need:
 
 // db.Users.update password ---- so users can update their passwords
 
@@ -63,4 +83,4 @@ module.exports = function(app) {
 
 // db.Posts.destroy post
 
-// db.Captions.destroy caption
+// db.Captions.destroy captions
