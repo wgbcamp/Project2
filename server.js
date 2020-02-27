@@ -1,6 +1,8 @@
 // require dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
+var multer = require("multer");
+// var upload = require({dest: "./public/uploads"})
 
 
 // Sets up the Express App
