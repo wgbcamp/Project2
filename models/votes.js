@@ -1,6 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Votes = sequelize.define("Votes", {
-      
+      // Boolean value that will always be set to true if a vote exists
+      // We'll check for this in post requests to prevent making more than 1 vote on a caption
+      // Let me know if we don't need this, I feel like I'm overlooking something
+      voted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+      }
     });
     Votes.associate = function(models) {
         // We're saying that a Vote should belong to a Post

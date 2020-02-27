@@ -5,9 +5,11 @@ data = {
     img_src: base64img.base64Sync('./assets/img/test.png');
   }
 
-
 //   and here's how the handlebars page will look
 
 {{#if img_src}}
     <img src="{{{img_src}}}" alt=""/>
 {{/if}}
+
+
+// There might be other ways to make it work, I don't even know if this will work tbh
