@@ -40,27 +40,27 @@ module.exports = function (app) {
       include: [db.Captions]
     }).then(post => {
       // Render the 'onePost' view with the single post passed in
-      res.render("onePost", { post })
+      res.render("searchResults", { post })
       console.log(post)
     })
   });
 
   // Posts page will render all posts, joins captions 
   app.get("/", ensureAuthenticated, function (req, res) {
-    console.log('homepage')
+    console.log('homepage loaded')
   db.Posts.findAll({
      include: [db.Captions]})
     .then(posts => {
       // Render the 'allPosts' view with posts+captions passed in as an object (handlebars reads the object/keys)
-      res.render("allPosts", { posts });
+      res.render("index", { posts });
       console.log(  posts )
       // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
       // but the actual object can just be "posts"
     });
   });
 
-  // Index page will be a homepage with a login button
-  // app.get("/", function (req, res) {
+  // Welcome page will be a homepage with a login button
+  // app.get("/welcome", function (req, res) {
   //   res.render("welcome")
   // })
 
