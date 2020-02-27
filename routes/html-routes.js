@@ -1,4 +1,5 @@
 var db = require("../models")
+const { ensureAuthenticated } = require('../config/auth')
 
 module.exports = function (app) {
 
@@ -31,6 +32,7 @@ module.exports = function (app) {
 
   // Page to view a single post
   app.get("/posts/:id", function (req, res) {
+    console.log('homepage')
     db.Posts.findOne({
       where: {
         id: req.params.id
@@ -43,22 +45,23 @@ module.exports = function (app) {
     })
   });
 
-  // Posts page will render all posts  -----------!! We will have to change this to an inner join to get posts and captions
-  app.get("/", function (req, res) {
+  // Posts page will render all posts, joins captions 
+  app.get("/", ensureAuthenticated, function (req, res) {
+    console.log('homepage')
   db.Posts.findAll({
      include: [db.Captions]})
     .then(posts => {
-      // Render the 'allPosts' view with posts passed in as an object (handlebars reads the object/keys)
+      // Render the 'allPosts' view with posts+captions passed in as an object (handlebars reads the object/keys)
       res.render("allPosts", { posts });
-      console.log(  posts[0].dataValues.Captions[0].dataValues )
+      console.log(  posts )
       // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
       // but the actual object can just be "posts"
     });
   });
 
   // Index page will be a homepage with a login button
-  app.get("/", function (req, res) {
-    res.render("welcome")
-  })
+  // app.get("/", function (req, res) {
+  //   res.render("welcome")
+  // })
 
 }

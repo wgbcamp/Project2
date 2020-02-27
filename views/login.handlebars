@@ -1,16 +1,16 @@
 {{!-- Straightforward bootstrap login form --}}
 <h1 class="text-center mt-5">Login</h1>
 <div class="container border rounded py-2 mt-1" style="width: 50%;">
-    <form>
+    <form action="api/login" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter Username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
         </div>
-        <button type="button" class="btn btn-secondary" id="register-button">Register</button>
+        <button type="button" class="btn btn-light" id="register-button">Register</button>
         <button type="submit" class="btn btn-dark" id="login-button">Login</button>
     </form>
 </div>
