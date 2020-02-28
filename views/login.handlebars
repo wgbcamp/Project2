@@ -1,6 +1,6 @@
 {{!-- Straightforward bootstrap login form --}}
 <h1 class="text-center mt-5">Login</h1>
-<div class="container border rounded py-2 mt-1" style="width: 50%;">
+<div class="container border rounded py-2 mt-2" style="width: 50%;">
     <form action="api/login" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
@@ -10,7 +10,7 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
         </div>
-        <button type="button" class="btn btn-light" id="register-button">Register</button>
-        <button type="submit" class="btn btn-dark" id="login-button">Login</button>
+        <button type="submit" class="btn btn-dark mb-2" id="login-button">Login</button>
+        <button type="button" class="btn btn-light mb-2 ml-2" id="register-button">Register</button>
     </form>
 </div>
