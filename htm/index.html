@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Project2</title>        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="main.css">        
+    </head>
+    <body>
+        <div class="topnav text-center">
+            <div class="logo">
+              <h2 style="font-size:3vw; position: relative; left: -30px;">Post Photos</h2>
+            </div>
+          </div>
+          <div class="dropdown" style="float:right;">
+            <button class="dropbtn">Make Your choice</button>
+            <div class="dropdown-content">
+            <a href="#">Account</a>
+            <a href="#">Make A Post</a>
+            <a href="./Secondpage/index.html">Your Profile</a>
+            </div>
+          </div>  
+        </div> 
+        <br>
+        <div class="second-nav">             
+          <div class="secondnav-body ">              
+          </div>         
+        </div> 
+
+        <!--Picture group start here-->
+        <div class="conatainer">
+
+            <div class="text-body text-center">               
+              <div class="card-header" style="width: 39%; position: relative; right: 50px;"><h6>Today's Trends Post</h6></div>
+            </div>  
+            
+            
+             <!--picture 1 holder-->
+            <div class="col-lg-12">          
+              <div class="card-group" style="width: 40%;">
+                <div class="card">                 
+
+                  <!--Title-->
+                  <div class="desc-sm-1" style="margin: 20px;">
+                    <h5 class="title">The World is Right At Your Fingertips</h5>
+                  </div>
+                  
+                  <!--COMMENT DESC AND VOTE BUTTON ON THE RIGHT-->
+                  <div class="row" style="width: 100%; ">                    
+                    <!--pic desc-->
+                    <div class="desc-sm-1" style="margin: 20px; position: relative; left: 10px;">
+                      <p class="title">The globe on the keyboad</p>
+                    </div>                   
+                    <!--vote button on the right-->
+                    <div class="column1" style="bottom: 200px; position: relative; bottom: 50px; left: 100px;">                     
+                        <div class="margin-1-wrapper">
+                          <button style="font-size:10px;"><i class='fas fa-arrow-up'></i></button>
+                        </div>
+                        50 
+                        <div class="margin-1-wrapper">                
+                          <button style='font-size:10px'><i class='fas fa-arrow-down'></i></button>
+                        </div>
+                       
+                      </div>
+                    </div>
+                    <!--Pic 1-->               
+                    <p class="card-text" style="margin: 10px;"></p>                
+                    <img src="./img/globe.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                    <br>
+                    <div class="card-body">                
+                    <!--THIS IS FOR THE COMMENT BUTTON-->
+                    <div class="container">                    
+                      <button type="button" style="background-color: rgb(98, 193, 231); color: black; font-size: x-small; position: relative; right: 145px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Add Comments
+                      </button>
+                      <br>
+                      <br>
+                      <!-- The Modal -->
+                      <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-m">
+                          <div class="modal-content">
+                          
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Comment</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              Text Something..
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Post</button>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--comment caption-->
+                      <div class="card" style="width: 250%; position: relative; right: 150px;" >
+                        <div class="card-header" style="width: 100%;">
+                          <p class="comments" style="text-align: center">Comments</p>
+                        </div>
+                        <ul class="list-group list-group-flush" style="position: relative; right: 110px;">
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                        </ul>
+                      </div>                           
+                  </div>                      
+                </div> 
+              </div>  <!--this is close for pictures card-->
+            </div>                
+            <br>
+            <br>
+            <!--pitcture 2 holder-->
+            <div class="col-lg-12">          
+              <div class="card-group" style="width: 40%;">
+                <div class="card">                 
+
+                  <!--Title-->
+                  <div class="desc-sm-1" style="margin: 20px;">
+                    <h5 class="title">Waterfall, Somewhere In Texas</h5>
+                  </div>
+                  
+                  <!--COMMENT DESC AND VOTE BUTTON ON THE RIGHT-->
+                  <div class="row" style="width: 100%; ">                    
+                    <!--pic desc-->
+                    <div class="desc-sm-1" style="margin: 20px; position: relative; left: 10px;">
+                      <p class="title">Beautiful green lake with water fall</p>
+                    </div>                   
+                    <!--vote button on the right-->
+                    <div class="column1" style="bottom: 200px; position: relative; bottom: 50px; left: 100px;">                     
+                        <div class="margin-1-wrapper">
+                          <button style="font-size:10px;"><i class='fas fa-arrow-up'></i></button>
+                        </div>
+                        50 
+                        <div class="margin-1-wrapper">                
+                          <button style='font-size:10px'><i class='fas fa-arrow-down'></i></button>
+                        </div>
+                       
+                      </div>
+                    </div>
+                    <!--Pic 2-->               
+                    <p class="card-text" style="margin: 10px;"></p>                
+                    <img src="./img/waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                    <br>
+                    <div class="card-body">                
+                    <!--THIS IS FOR THE COMMENT BUTTON-->
+                    <div class="container">                    
+                      <button type="button" style="background-color: rgb(98, 193, 231); color: black; font-size: x-small; position: relative; right: 145px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Add Comments
+                      </button>
+                      <br>
+                      <br>
+                      <!-- The Modal -->
+                      <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-m">
+                          <div class="modal-content">
+                          
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Comment</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              Text Something..
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Post</button>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--comment caption-->
+                      <div class="card" style="width: 250%; position: relative; right: 150px;" >
+                        <div class="card-header" style="width: 100%;">
+                          <p class="comments" style="text-align: center">Comments</p>
+                        </div>
+                        <ul class="list-group list-group-flush" style="position: relative; right: 110px;">
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item"></li>
+                        </ul>
+                      </div>
+                    </div>    
+                  </div> 
+                </div>
+              </div>       
+        </div> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    </body>
+</html>
