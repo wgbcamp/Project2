@@ -60,8 +60,8 @@ module.exports = function (app) {
   });
 
   // Welcome page will be a homepage with a login button
-  // app.get("/welcome", function (req, res) {
-  //   res.render("welcome")
-  // })
+  app.get("/welcome", function (req, res) {
+    res.render("welcome")
+  });
 
 }
