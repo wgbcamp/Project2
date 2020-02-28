@@ -59,7 +59,7 @@ module.exports = function (app) {
                                 password: hash
                             }).then(function () {
                                 // Send the user to the login page
-                                res.render("login")
+                                res.redirect("/login")
                             })
                         })
                     })
