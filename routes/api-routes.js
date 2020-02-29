@@ -25,8 +25,8 @@ module.exports = function (app) {
             errors.push({ msg: 'Password must match!' })
         };
         // Check password length
-        if (password.length < 6) {
-            errors.push({ msg: 'Password must contain at least 6 characters' })
+        if (password.length < 0) {
+            errors.push({ msg: 'Password must contain at least 0 characters' })
         };
         // If there are errors, send back the errors and username
         // This is useless for now, but we can add a partials folder with an 'errors' file inside and call that on the register page
@@ -82,12 +82,15 @@ module.exports = function (app) {
         })(req, res, next)
     });
 
-    app.post("api/newPost", function(req,res){
+    app.post("/api/vote", function(req,res){
         console.log(req.body)
-
+        db.Votes.create({
+            voted: true
+        }).then(function(){
+            res.render("index")
+        });
 
     });
-
 
 }
 

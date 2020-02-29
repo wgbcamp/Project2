@@ -22,15 +22,44 @@
           <button type="submit" class="btn btn-dark mb-2 mx-auto">Search</button>
         </form>
       </div>
-      {{!-- <!-- Button to submit a new post --> --}}
+      {{!-- <!-- Button to submit a new post -->
       <div class="btn-group-vertical mt-5" role="group" aria-label="navs">
         <button type="button" class="btn btn-dark" id="newpost-button">Submit a new post</button>
-      </div>
+      </div> --}}
+      <h5>Submit Post</h5>
+      <form action="/api/newPost" method="POST">
+        <div class="form-group">
+          <label>Post Title</label>
+          <input type="title" id="postTitle" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label>Post Content</label>
+          
+        </div>
+        <button type"submit" class= "btn btn-dark mb-2 mx-auto">Submit</button>
+
+      </form>
+    
+    
+    
+    
+    
+    
+    
+    
     </div>
+
+
+
+
+
+
+
     {{!-- <!-- Making the left column scroll with the page creates some empty space, so this is a spacer div --> --}}
     <div class="col-2 border-right border-dark"></div>
     {{!-- <!-- Middle Column --> --}}
     <div class="col-8" style="padding-left: 10%; padding-right: 10%;">
+      
       {{!-- <!-- Column Title --> --}}
       <h1 class="text-center my-2">Top Posts</h1>
       {{!-- <!-- ||||||||||||||||||||||||||||||||||||||||| Cards for posts ||||||||||||||||||||||||||||||||||||||||| --> --}}
@@ -44,12 +73,15 @@
           {{!-- <!-- Captions and votes go here --> --}}
            {{#each Captions}}
           <div class="row">
+
             {{!-- <!-- Upvote icon and upvotes --> --}}
             <div class="col-1 px-0 my-auto">
-              <h5 class="text-center">{{dataValues.noOfVotes}}  </span><img src="assets/sampleimg/upvote.png" alt="upvote"
-                  height="25px" width="25px" style="background: transparent;">
-              </h5>
+              <h5 class="text-center">{{dataValues.noOfVotes}}</h5>
+              <form action="api/vote" method="post">
+              <input type="submit" name="upvote" value="+" class="btn-sm"/>
+              </form>
             </div>
+
             {{!-- <!-- Caption --> --}}
             <div class="col-11 ml-auto">
               <div class="container mb-1 py-1 border rounded bg-dark">
@@ -65,6 +97,8 @@
       </div>
       {{/each}}
       </div>
+
+
       {{!-- <!-- Right Column --> --}}
       <div class="col-2 border-left border-dark text-center px-2">
         {{!-- <!-- Recent posts div --> --}}
