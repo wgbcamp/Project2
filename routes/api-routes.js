@@ -82,6 +82,12 @@ module.exports = function (app) {
         })(req, res, next)
     });
 
+    app.post("api/newPost", function(req,res){
+        console.log(req.body)
+
+
+    });
+
 
 }
 
@@ -94,7 +100,9 @@ module.exports = function (app) {
 
 
 // Create/Update Posts Routes
-// db.Posts.create post  ---- so users can create posts
+// db.Posts.create post  ---- so users can create post
+
+
 
 // db.Posts.update title  ---- so users can update titles of posts
 

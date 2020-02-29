@@ -10,9 +10,3 @@ $('#register-button').click(function (e) {
     location.href = "/register"
 });
 
-$('#newpost-button').click(function (e) {
-    e.preventDefault();
-    location.href = "/newPost"
-});
-
-console.log(user)
