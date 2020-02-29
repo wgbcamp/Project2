@@ -2,6 +2,8 @@
 {{!-- <!-- Left side for nav links like acccount, new post --> --}}
 {{!-- <!-- Middle for main content like posts or forms --> --}}
 {{!-- <!-- Right side for latest posts or the posts you've most recently voted on --> --}}
+
+
 <div class="container-fluid">
   <div class="row mt-2">
     <!-- Left Column -->
@@ -19,12 +21,22 @@
           </div>
           <button type="submit" class="btn btn-dark mb-2 mx-auto">Search</button>
         </form>
-      </div>
-      {{!-- <!-- Button to submit a new post --> --}}
-      <div class="btn-group-vertical mt-5" role="group" aria-label="navs">
-        <button type="button" class="btn btn-dark">Submit a new post</button>
-      </div>
-    </div>
+         <div>
+           <h5>Create a Post</h5>
+          <form action="api/newPost" method="POST">
+          <div class="form-group" id="title">
+            <input type="title" class="form-control" id="postTitle" placeholder="Enter Title">
+          </div>
+          <div class="form-group" id="postContent">
+          <textarea class="form-control" name="username" rows="3">Post</textarea>
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  </div>
+
+
+
+
     {{!-- <!-- Making the left column scroll with the page creates some empty space, so this is a spacer div --> --}}
     <div class="col-2 border-right border-dark"></div>
     {{!-- <!-- Middle Column --> --}}

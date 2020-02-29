@@ -4,11 +4,9 @@
 // week 14 activity 5 has some good examples
 
 
-
-// This is for testing, delete later
+// This is for the button on the login form. It redirects to the register page. (make sure /register wasn't changed for testing purposes)
 $('#register-button').click(function (e) { 
     e.preventDefault();
     location.href = "/register"
 });
-
 

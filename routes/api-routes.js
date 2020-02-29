@@ -4,6 +4,13 @@ const passport = require("passport")
 
 module.exports = function (app) {
 
+    // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
+    // The "Account" link in the navbar uses this route
+    app.get("/api/acctredirect", function(req, res) {
+        let username = req.user.username
+        res.redirect("/account/" + username)
+    })
+    
     app.post("/api/register", function (req, res) {
         console.log(req.body)
         // Bring in the reqs so that we can do some checks here (we could move this to another file later)
@@ -18,8 +25,8 @@ module.exports = function (app) {
             errors.push({ msg: 'Password must match!' })
         };
         // Check password length
-        if (password.length < 6) {
-            errors.push({ msg: 'Password must contain at least 6 characters' })
+        if (password.length < 0) {
+            errors.push({ msg: 'Password must contain at least 0 characters' })
         };
         // If there are errors, send back the errors and username
         // This is useless for now, but we can add a partials folder with an 'errors' file inside and call that on the register page
@@ -75,9 +82,15 @@ module.exports = function (app) {
         })(req, res, next)
     });
 
-    app.post("api/newPost", function(req,res){
-        console.log(req.body)
+    app.post("/api/newPost", function(req,res){
+        console.log(req.body);
+        db.Posts.create({
+            title: "title1",
+            image: "image1",
+            totalVotes: 0,
 
+        })
+      
 
     });
 
