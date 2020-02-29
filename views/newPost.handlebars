@@ -1,10 +1,9 @@
 {{!-- Easy simple form with post method pointing to the api route --}}
 
-<form>
+<form action="api/newPost" method="POST">
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Post</textarea>
+    <textarea class="form-control" name="username" rows="3">Post</textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-

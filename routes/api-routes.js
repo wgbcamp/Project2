@@ -76,9 +76,10 @@ module.exports = function (app) {
     });
 
     app.post("api/newPost", function(req,res){
-        
+        console.log(req.body)
 
-    })
+
+    });
 
 
 }
