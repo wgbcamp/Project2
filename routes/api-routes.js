@@ -1,7 +1,7 @@
 var db = require("../models")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
-
+const upload = require('../server')
 module.exports = function (app) {
 
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
@@ -88,6 +88,36 @@ module.exports = function (app) {
 
     });
 
+    //page for user to upload images
+    app.get('/newPost', (req,res) =>{
+    res.render('newPost', {
+  
+    })
+
+    
+  })
+
+  //post request to send images to client webpage
+    app.post('/uploadimage', (req, res) => {
+    upload(req, res, (err) => {
+        if(err){
+            res.render('newPost', {
+               msg: err 
+            });
+        } else {
+            if(req.file == undefined){
+                res.render('newPost', {
+                    msg: 'Error: No File Selected!'
+                }); 
+            }else {
+                res.render('newPost', {
+                    msg: 'File Uploaded!',
+                    file: `/assets/images/${req.file.filename}`
+                });
+            }
+        }
+        });
+     });
 
 }
 
