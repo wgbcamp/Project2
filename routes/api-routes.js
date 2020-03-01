@@ -2,6 +2,7 @@ var db = require("../models")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const upload = require('../server')
+
 module.exports = function (app) {
 
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
@@ -120,6 +121,8 @@ module.exports = function (app) {
      });
 
 }
+
+
 
 // Still need:
 
