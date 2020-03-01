@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>second page for Project2</title>        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <link rel="stylesheet" href="style.css">      
+    </head>
+    <body>
+        <div class="topnav text-center">
+          <div class="logo-holder">
+            <h2 style="font-size:3vw;">Caption Clown</h2>
+          </div>
+        </div>
+        <div class="left-btn" style="float: left;">
+          <a button  href="../index.html"        class="button button3">Home</a></button>
+        </div>        
+        <div class="dropdown" style="float:right;">
+          <button class="dropbtn">Make Your choice</button>
+          <div class="dropdown-content">
+          <a href="#">Account</a>
+          <a href="#">Make A Post</a>
+          <a href="index.html">Your Profile</a>
+          </div>
+        </div>          
+        <!--MASTER CONTAINER-->        
+        <div class="container" style="width: 50%; background-color: rgb(238, 234, 241);"></div>
+          <div class="row rows-cols-10">
+            <!-- Testing -->
+          </div>          
+          <!--This hold the whole card behind the cat pic-->
+          <div class="card"  style="width: 50%; height: 500px; top: 40px;">
+            <div class="row row-cols-8">        
+
+            <div class="midle-holder"  style="width: 100%; height: 350px; background-color: rgb(13, 169, 197);">
+              <blockquote class="blockquote mb-0">
+              <div class="col mb-4">
+
+                <div class="card p-3 text-center"  style="width: 100%; height: 200px; top: 200px;">                
+                  <div class="col mb-4">
+                </div>                
+                <!--this for the cat pic holder on the top-->
+                <div class="picture-holder" style="width: 100%;">
+                  <img src="../img/bigeyes.jpg"  style="width: 170px; height: 170px; border-radius: 100px;"  class="card-img-top" alt="...">
+                  <div class="card-body" style="font-size:small;">
+                    <h5 class="card-name">Ella Mille</h5>
+                    <p class="text">Hi, My name is Ella I like to eat Tuna and I like to Meow</p>
+                    <div class="line-lg">
+                      <hr></hr>
+                    </div>
+                    <div class="links-holder">
+                      <a href="index.html" style="margin:5px">Post</a>
+                      <a href="#"  style="margin:5px">My Account</a>
+                      <a href="index.html" style="margin:5px">My Album</a>
+                      <a href="../index.html" style="margin:5px">Today's Trends Post</a>                      
+                    </div>                       
+                  </div>
+                </div>                      
+              </div>
+            </div>            
+            <br>          
+          </div>   
+          <br>  
+          <!-- post form, start here-->          
+          <div class="card"  style=" width: 1010%; margin-right: -20px; margin-top: 133px; right: 10px;">              
+            <div class="row row-cols-12 row-cols-lg-20 text-left" style="width: 100%;" >                
+              <div class="card-header" style="width: 100%; ">              
+                <h5 class="card-text text-center">Post</h5>
+              </div>                           
+              <form> 
+                <!--this hold the title,text and upload box-->
+                <div class="container2-lg-12" style="width: 500px; position: relative; top: 10px;" > 
+                  <div class="form-body">                                              
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1" style="text-align: left;">Title</Title></label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                    </div>         
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Text Something</textarea>
+                        <br>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile02">
+                          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>                         
+                          <button type="button" class="btn btn-outline-secondary" style="float: right; position: relative;  bottom: 38px; left: 56px;">Post</button>                  
+                        </div>               
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>            
+          <!--this is the pic album holder-->
+          <div class="card"  style=" margin-right: -20px; margin-top: px; right: 10px;">
+            <div class="row row-cols-8 row-cols-lg-20" style="width: 100%;">                
+            <!--the pic album row start here. album 1-->
+            <div class="row" style="width: 100%;">
+              <div class="column">
+                <div class="card1" style="width: 100%; margin-top: 20px;">
+                  <h5 class="card-title" style="width: 100%; font-size: 20px; text-align: left;">Paris</h5>
+                  <img src="../img/paris.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                  <br>
+                  <br>
+                  <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>
+                </div>
+              </div>                        
+              <div class="column">
+                <div class="card2"  style="width: 100%; margin-top: 20px;">
+                  <h5 class="card-title" style="width: 100%; font-size: 15px; text-align:left;">Washington DC</h5>
+                  <img src="../img/washinton.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                  <br>
+                  <br>                  
+                  <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>                  
+                </div>
+              </div>
+                           
+              <div class="column">
+                <div class="card3"  style="width: 100%; margin-top: 20px; text-align: left;">
+                  <h3 class="card-title" style="width: 100%; font-size: 15px; ">Desc</h3>
+                  <p>Some text, tessssssssting</p>
+                  <p>Some text, tessssssssting</p>
+                  <div class="margin-1-wrapper">
+                    <button style="font-size:10px;"><i class='fas fa-arrow-up'></i></button>
+                  </div>
+                  50
+                  <div class="margin-1-wrapper">                
+                    <button style='font-size:10px'><i class='fas fa-arrow-down'></i></button>
+                  </div>
+                  <div class="margin-1">
+                    <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; left:  50px; bottom: 25px;"  class="btn">Delete</button>
+                  </div>
+                </div>
+              </div>  
+              <!--pic  row 2 -->
+              <div class="row" style="width: 120%;">
+                <div class="column">
+                  <div class="card1" style="width: 100%; margin-top: 20px;">
+                    <h5 class="card-title" style="width: 100%; font-size: 15px; text-align: left;">Paris</h5>
+                    <img src="../img/paris.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                    <br>
+                    <br>
+                    <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>
+                  </div>
+                </div>              
+                <div class="column">
+                  <div class="card2"  style="width: 100%; margin-top: 20px;">
+                    <h5 class="card-title" style="width: 100%; font-size: 15px;  text-align: left;">Washington DC</h5>
+                    <img src="../img/washinton.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                    <br>
+                    <br>                    
+                    <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>                    
+                  </div>
+                </div>                
+                <div class="column">
+                  <div class="card3"  style="width: 100%; margin-top: 20px; text-align: left;">
+                    <h3 class="card-title" style="width: 100%; font-size: 15px;">Desc</h3>
+                    <p>Some text, tessssssssssting</p>
+                    <p>Some text, tessssssssssting</p>
+                    <div class="margin-1-wrapper">
+                      <button style='font-size:10px'><i class='fas fa-arrow-up'></i></button>
+                    </div>
+                    50
+                    <div class="margin-1-wrapper">                
+                      <button style='font-size:10px'><i class='fas fa-arrow-down'></i></button>
+                    </div>
+                    <div class="margin-1">
+                      <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; left:  50px; bottom: 25px;"  class="btn">Delete</button>
+                    </div>
+                  </div>
+                </div>  
+                <!--pic row 3-->
+                <div class="row" style="width: 120%;">
+                  <div class="column">
+                    <div class="card1" style="width: 100%; margin-top: 20px; text-align: left;">
+                      <h5 class="card-title" style="width: 100%; font-size: 15px;">Paris</h5>
+                      <img src="../img/paris.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                      <br>
+                      <br>
+                      <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>
+                    </div>
+                  </div>                
+                  <div class="column">
+                    <div class="card2"  style="width: 100%; margin-top: 20px;">
+                      <h5 class="card-title" style="width: 100%; font-size: 15px; text-align: left;">Washington DC</h5>
+                      <img src="../img/washinton.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                      <br>
+                      <br>
+                      <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; bottom: 10px; float: left;"  class="btn">Delete</button>                  
+                    </div>
+                  </div>                  
+                  <div class="column">
+                    <div class="card3"  style="width: 100%; margin-top: 20px; text-align: left;">
+                      <h3 class="card-title" style="width: 100%; font-size: 15px;">Desc</h3>
+                      <p>Some text, tesssssssssting</p>
+                      <p>Some text, tesssssssssting</p>
+                      <div class="margin-1-wrapper">
+                        <button style='font-size:10px'><i class='fas fa-arrow-up'></i></button>
+                      </div>
+                      50
+                      <div class="margin-1-wrapper">                
+                        <button style='font-size:10px'><i class='fas fa-arrow-down'></i></button>
+                      </div>
+                      <div class="margin-1">
+                        <button  style=" width: 40%; height: 5%; font-size: 12px; position: relative; left:  50px; bottom: 25px;"  class="btn">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+        </div> <!--close master container. and hold everthing !! -->     
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>        
+    </body>
+</html>
