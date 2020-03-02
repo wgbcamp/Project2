@@ -4,7 +4,6 @@ const passport = require("passport")
 const upload = require('../server')
 
 //saving image path for uploading caption value
-var x = "";
 
 module.exports = function (app) {
 
@@ -105,16 +104,16 @@ module.exports = function (app) {
     app.post('/uploadimage', (req, res) => {
     upload(req, res, (err) => {
         if(err){
-            res.render('newCaption', {
+            res.render('newTitle', {
                msg: err 
             });
         } else {
             if(req.file == undefined){
-                res.render('newCaption', {
+                res.render('newTitle', {
                     msg: 'Error: No File Selected!'
                 }); 
             }else {
-                res.render('newCaption', {
+                res.render('newTitle', {
                     msg: 'File Uploaded!',
                     file: `/assets/images/${req.file.filename}`
                 });
@@ -125,7 +124,7 @@ module.exports = function (app) {
      });
 
      //uploads captions
-     app.post('/uploadcaption', (req, res) => {     
+     app.post('/uploadtitle', (req, res) => {     
         db.Posts.create({
             title: req.body.title,
             image: req.body.image,
@@ -133,7 +132,10 @@ module.exports = function (app) {
             author: req.user.username,
             UserId: req.user.id
         })
-        // .then(res.render)
+        .then(function () {
+        // Send the user back to main page
+        res.redirect("/")
+    })
      });
 
 }
