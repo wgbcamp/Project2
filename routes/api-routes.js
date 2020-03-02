@@ -93,12 +93,17 @@ module.exports = function (app) {
 
     //page for user to upload images
     app.get('/newPost', (req,res) =>{
-    res.render('newPost', {
+    res.render('newPost');
   
     })
 
     
-  })
+    //page for users to upload captions after clicking on a post
+    app.get('/newCaption', (req, res) => {
+    res.render('newCaption');
+    })
+    
+ 
 
   //post request to send images to client webpage
     app.post('/uploadimage', (req, res) => {
@@ -123,7 +128,7 @@ module.exports = function (app) {
         });
      });
 
-     //uploads captions
+     //allows user to add title to post and sends post info to database
      app.post('/uploadtitle', (req, res) => {     
         db.Posts.create({
             title: req.body.title,
@@ -138,7 +143,18 @@ module.exports = function (app) {
     })
      });
 
+     //allows posting of captions to database
+    app.post('/postcaption', (req, res) => {
+        db.Captions.create({
+            text: req.body.text,
+            noOfVotes: 0,
+            author: req.user.username,
+            PostId: "notsureyet",
+            UserId: req.user.id
+        })
+    })
 }
+    
 
 // Still need:
 

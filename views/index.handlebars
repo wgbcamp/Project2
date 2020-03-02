@@ -3,7 +3,7 @@
 {{!-- <!-- Middle for main content like posts or forms --> --}}
 {{!-- <!-- Right side for latest posts or the posts you've most recently voted on --> --}}
 
-
+ 
 <div class="container-fluid">
   <div class="row mt-2">
     <!-- Left Column -->
@@ -35,12 +35,13 @@
       <h1 class="text-center my-2">Top Posts</h1>
       {{!-- <!-- ||||||||||||||||||||||||||||||||||||||||| Cards for posts ||||||||||||||||||||||||||||||||||||||||| --> --}}
       {{#each posts}}
-      <div class="card bg-dark text-light my-3 px-1 py-1" id="{{dataValues.id}}">
+      <div class="card bg-dark text-light my-3 px-1 py-1 clickable" id="{{dataValues.id}}">
         {{!-- <!-- Image for the post - change the src to dataValues.image --> --}}
-        <img src="assets/sampleimg/funny.jpg" class="card-img-top" alt="fake">
+        <img src="{{{dataValues.image}}}" class="card-img-top" id="test" alt="fake">
         <div class="card-body">
           {{!-- <!-- Title of the post --> --}}
           <h5 class="card-title">{{dataValues.title}}</h5>
+          <h6 class="card-title">{{dataValues.author}}</h6>
           {{!-- <!-- Captions and votes go here --> --}}
            {{#each Captions}}
           <div class="row">
@@ -91,3 +92,22 @@
       </div>
     </div>
   </div>
+
+ 
+  {{!-- Typed this up while looking for ways to make posts clickable for user captions, a "clickable" id is added to the cards above<script>
+    require("./routes/api-routes")(app);
+      $('.clickable').click(function(){
+        alert(this.id);
+        console.log(this.id);
+        if(this.id =! null){
+          
+
+          console.log("its not null");
+              app.get('/newCaption', (req, res) => {
+    res.render('newCaption');
+    })
+
+        }
+      });
+    
+  </script> --}}
