@@ -3,6 +3,9 @@ const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const upload = require('../server')
 
+//saving image path for uploading caption value
+var x = "";
+
 module.exports = function (app) {
 
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
@@ -102,27 +105,38 @@ module.exports = function (app) {
     app.post('/uploadimage', (req, res) => {
     upload(req, res, (err) => {
         if(err){
-            res.render('newPost', {
+            res.render('newCaption', {
                msg: err 
             });
         } else {
             if(req.file == undefined){
-                res.render('newPost', {
+                res.render('newCaption', {
                     msg: 'Error: No File Selected!'
                 }); 
             }else {
-                res.render('newPost', {
+                res.render('newCaption', {
                     msg: 'File Uploaded!',
                     file: `/assets/images/${req.file.filename}`
                 });
+
             }
         }
         });
      });
 
+     //uploads captions
+     app.post('/uploadcaption', (req, res) => {     
+        db.Posts.create({
+            title: req.body.title,
+            image: req.body.image,
+            totalVotes: 0,
+            author: req.user.username,
+            UserId: req.user.id
+        })
+        // .then(res.render)
+     });
+
 }
-
-
 
 // Still need:
 
