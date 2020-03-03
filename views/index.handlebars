@@ -3,7 +3,7 @@
 {{!-- <!-- Middle for main content like posts or forms --> --}}
 {{!-- <!-- Right side for latest posts or the posts you've most recently voted on --> --}}
 
-
+ 
 <div class="container-fluid">
   <div class="row mt-2">
     <!-- Left Column -->
@@ -26,7 +26,6 @@
       <div class="btn-group-vertical mt-5" role="group" aria-label="navs">
         <button type="button" onclick="location.href='newPost';" class="btn btn-dark" id="newpost-button">Submit a new post</button>
       </div>
-
     </div>
     {{!-- <!-- Making the left column scroll with the page creates some empty space, so this is a spacer div --> --}}
     <div class="col-2 border-right border-dark"></div>
@@ -36,12 +35,16 @@
       <h1 class="text-center my-2">Top Posts</h1>
       {{!-- <!-- ||||||||||||||||||||||||||||||||||||||||| Cards for posts ||||||||||||||||||||||||||||||||||||||||| --> --}}
       {{#each posts}}
-      <div class="card bg-dark text-light my-3 px-1 py-1" id="{{dataValues.id}}">
+      <div class="card bg-dark text-light my-3 px-1 py-1 clickable" id="{{dataValues.id}}">
         {{!-- <!-- Image for the post - change the src to dataValues.image --> --}}
-        <img src="assets/sampleimg/funny.jpg" class="card-img-top" alt="fake">
+        <img src="{{{dataValues.image}}}" class="card-img-top" id="test" alt="fake">
         <div class="card-body">
           {{!-- <!-- Title of the post --> --}}
           <h5 class="card-title">{{dataValues.title}}</h5>
+          <h6 class="card-title"><i>Posted by: {{dataValues.author}}</i></h6>
+          <form action="/newCaption" method="POST" class="form-inline">
+                <button name="postid" type="submit" class="btn btn-light" value="{{{dataValues.id}}}">Submit Caption</button>
+                </form>
           {{!-- <!-- Captions and votes go here --> --}}
            {{#each Captions}}
           <div class="row">
@@ -58,6 +61,11 @@
                 <p class="card-text mb-0 text-light">{{dataValues.text}}</p>
                 {{!-- <!-- Caption Author --> --}}
                 <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: {{dataValues.author}} </small></p>
+                
+                
+                
+
+
               </div>
             </div>
           </div>
@@ -92,3 +100,28 @@
       </div>
     </div>
   </div>
+
+ 
+  {{!-- Typed this up while looking for ways to make posts clickable for user captions, a "clickable" id is added to the cards above
+   --}}
+  {{!-- <script>
+    
+      $('.clickable').click(function(){
+        alert(this.id);
+        console.log(this.id);
+        if(this.id =! null){
+          
+
+          console.log("its not null");
+
+
+    $.ajax({
+        url: 'http://localhost:8080/newCaption',
+        method: 'POST'
+    })
+
+
+        }
+      });
+    
+  </script> --}}
