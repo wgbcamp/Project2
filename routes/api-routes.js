@@ -6,11 +6,13 @@ module.exports = function (app) {
 
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
     // The "Account" link in the navbar uses this route
-    app.get("/api/acctredirect", function(req, res) {
+    app.get("/api/acctredirect", function (req, res) {
         let username = req.user.username
         res.redirect("/account/" + username)
     })
-    
+
+
+
     app.post("/api/register", function (req, res) {
         console.log(req.body)
         // Bring in the reqs so that we can do some checks here (we could move this to another file later)
@@ -75,37 +77,49 @@ module.exports = function (app) {
         }
     });
 
-    app.post("/api/login", function(req, res, next) {
+    app.post("/api/login", function (req, res, next) {
         passport.authenticate('local', {
             successRedirect: '/',
             failureRedirect: '/login'
         })(req, res, next)
     });
 
-    app.post("api/newPost", function(req,res){
+    app.post("api/newPost", function (req, res) {
         console.log(req.body)
-
 
     });
 
-
+    // Update Passwords Route
+    app.put("/api/users", function (req, res) {
+        // Password encryption
+        // This generates an encrytion 'salt' whatever that means
+        bcrypt.genSalt(10, function (err, salt) {
+            // This uses that 'salt' and creates a hashed password
+            bcrypt.hash(req.body.newPassword, salt, function (err, hash) {
+                if (err) throw err;
+                // Post to the Users table and use the hash as the password
+                db.Users.update({
+                    password: hash
+                }, {
+                    where: {
+                        username: req.user.username
+                    }
+                },
+                ).then(function () {
+                    // Go back to account page
+                    res.redirect("/api/acctredirect")
+                })
+            })
+        })
+    })
 }
 
 // Still need:
 
 
-// Update Users Route
-// db.Users.update password ---- so users can update their passwords
-
-
 
 // Create/Update Posts Routes
 // db.Posts.create post  ---- so users can create post
-
-
-
-// db.Posts.update title  ---- so users can update titles of posts
-
 
 
 

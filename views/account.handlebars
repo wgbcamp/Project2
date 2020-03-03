@@ -1,18 +1,14 @@
-
-
-
-
-
-
-{{!-- STILL NEEDS DELETE ACCOUNT, UPDATE PASSWORD! also update post titles --}}
-
-
-
-
-
 <div class="container-fluid">
     {{#each user}}
+    <form class="form-inline">
+        <div class="form-group mx-auto mb-2">
+            <label for="updatePass" class="sr-only">New Password</label>
+            <input type="text" class="form-control" name="newPassword" id="newPass" placeholder="New Password">
+        </div>
+        <button type="submit" class="btn btn-dark mb-2 mx-auto" id="newPassword">Update</button>
+    </form>
     <h1 class="text-center mx-auto my-2 pb-2 border-bottom border-dark">Welcome {{dataValues.username}}</h1>
+
     <div class="row">
         <!-- Left Column -->
         <div class="col-sm-2 text-center mx-auto mt-3 position-fixed" style="z-index: 99;">

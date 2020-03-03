@@ -37,17 +37,17 @@
       {{#each posts}}
       <div class="card bg-dark text-light my-3 px-1 py-1" id="{{dataValues.id}}">
         {{!-- <!-- Image for the post - change the src to dataValues.image --> --}}
-        <img src="assets/sampleimg/funny.jpg" class="card-img-top" alt="fake">
+        <img src="{{dataValues.image}}" class="card-img-top" alt="fake">
         <div class="card-body">
           {{!-- <!-- Title of the post --> --}}
           <h5 class="card-title">{{dataValues.title}}</h5>
           {{!-- <!-- Captions and votes go here --> --}}
-           {{#each Captions}}
+          {{#each Captions}}
           <div class="row">
             {{!-- <!-- Upvote icon and upvotes --> --}}
             <div class="col-1 px-0 my-auto">
-              <h5 class="text-center">{{dataValues.noOfVotes}}  </span><img src="assets/sampleimg/upvote.png" alt="upvote"
-                  height="25px" width="25px" style="background: transparent;">
+              <h5 class="text-center">{{dataValues.noOfVotes}} </span><img src="assets/sampleimg/upvote.png"
+                  alt="upvote" height="25px" width="25px" style="background: transparent;">
               </h5>
             </div>
             {{!-- <!-- Caption --> --}}
@@ -56,7 +56,8 @@
                 {{!-- <!-- Caption text --> --}}
                 <p class="card-text mb-0 text-light">{{dataValues.text}}</p>
                 {{!-- <!-- Caption Author --> --}}
-                <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: {{dataValues.author}} </small></p>
+                <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: {{dataValues.author}} </small>
+                </p>
               </div>
             </div>
           </div>
@@ -64,30 +65,30 @@
         </div>
       </div>
       {{/each}}
-      </div>
-      {{!-- <!-- Right Column --> --}}
-      <div class="col-2 border-left border-dark text-center px-2">
-        {{!-- <!-- Recent posts div --> --}}
-        <div class="mt-3">
-          <h5>Top posts this week:</h5>
-          <div id="recentPosts">
-            {{!-- <!-- Image loop here --> --}}
-            <div class="container mb-1 py-1 border rounded bg-dark">
-              <img src="assets/sampleimg/funny.jpg" alt="recent" height="90%" width="90%">
-            </div>
+    </div>
+    {{!-- <!-- Right Column --> --}}
+    <div class="col-2 border-left border-dark text-center px-2">
+      {{!-- <!-- Recent posts div --> --}}
+      <div class="mt-3">
+        <h5>Top posts this week:</h5>
+        <div id="recentPosts">
+          {{!-- <!-- Image loop here --> --}}
+          <div class="container mb-1 py-1 border rounded bg-dark">
+            <img src="assets/sampleimg/funny.jpg" alt="recent" height="90%" width="90%">
           </div>
         </div>
-        {{!-- <!-- Recent caption votes div --> --}}
-        <div class="mt-5 text-center">
-          <h5>Captions you've upvoted:</h5>
-          <div id="recentCaptions">
-            {{!-- <!-- Captions loop here --> --}}
-            <div class="container mb-1 py-1 border rounded bg-dark">
-              <p class="card-text mb-0 text-left text-light">"I knew I should've worn pants today!"</p>
-              <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: Person1</small></p>
-            </div>
+      </div>
+      {{!-- <!-- Recent caption votes div --> --}}
+      <div class="mt-5 text-center">
+        <h5>Captions you've upvoted:</h5>
+        <div id="recentCaptions">
+          {{!-- <!-- Captions loop here --> --}}
+          <div class="container mb-1 py-1 border rounded bg-dark">
+            <p class="card-text mb-0 text-left text-light">"I knew I should've worn pants today!"</p>
+            <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: Person1</small></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

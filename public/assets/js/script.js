@@ -10,3 +10,21 @@ $('#register-button').click(function (e) {
     location.href = "/register"
 });
 
+$('#newPassword').click(function() {
+
+  // make a newPassword object
+  var newPassObj = {
+    newPassword: $("#newPass").val().trim(),
+  };
+console.log(newPassObj)
+  // send an AJAX Put-request with jQuery
+  $.ajax({
+    method: "PUT",
+    url: "/api/users",
+    data: newPassObj
+  }).then(function() {
+    console.log('updated');
+    location.href = "/api/acctredirect"
+  });
+
+})

@@ -29,10 +29,12 @@ module.exports = function (app) {
       }, 
       db.Captions,
       db.Votes] 
-    }).then(user => {
+    }).then(function(user) {
       // Render the 'account' view with the single user passed in
-      console.log({ user })
-      res.render("account", { user })
+      console.log( user )
+      if (user.length < 1) {
+        res.redirect("/")
+      } else res.render("account", { user })
     })
   });
 
@@ -76,3 +78,5 @@ module.exports = function (app) {
   });
 
 }
+
+
