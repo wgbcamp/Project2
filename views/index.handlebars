@@ -41,7 +41,10 @@
         <div class="card-body">
           {{!-- <!-- Title of the post --> --}}
           <h5 class="card-title">{{dataValues.title}}</h5>
-          <h6 class="card-title">{{dataValues.author}}</h6>
+          <h6 class="card-title"><i>Posted by: {{dataValues.author}}</i></h6>
+          <form action="/newCaption" method="POST" class="form-inline">
+                <button name="postid" type="submit" class="btn btn-light" value="{{{dataValues.id}}}">Submit Caption</button>
+                </form>
           {{!-- <!-- Captions and votes go here --> --}}
            {{#each Captions}}
           <div class="row">
@@ -58,6 +61,11 @@
                 <p class="card-text mb-0 text-light">{{dataValues.text}}</p>
                 {{!-- <!-- Caption Author --> --}}
                 <p class="card-text mb-1 text-right"><small class="text-muted">Captioner: {{dataValues.author}} </small></p>
+                
+                
+                
+
+
               </div>
             </div>
           </div>
@@ -94,8 +102,10 @@
   </div>
 
  
-  {{!-- Typed this up while looking for ways to make posts clickable for user captions, a "clickable" id is added to the cards above<script>
-    require("./routes/api-routes")(app);
+  {{!-- Typed this up while looking for ways to make posts clickable for user captions, a "clickable" id is added to the cards above
+   --}}
+  {{!-- <script>
+    
       $('.clickable').click(function(){
         alert(this.id);
         console.log(this.id);
@@ -103,9 +113,13 @@
           
 
           console.log("its not null");
-              app.get('/newCaption', (req, res) => {
-    res.render('newCaption');
+
+
+    $.ajax({
+        url: 'http://localhost:8080/newCaption',
+        method: 'POST'
     })
+
 
         }
       });

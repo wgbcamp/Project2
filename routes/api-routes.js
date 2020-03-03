@@ -99,10 +99,27 @@ module.exports = function (app) {
 
     
     //page for users to upload captions after clicking on a post
-    app.get('/newCaption', (req, res) => {
-    res.render('newCaption');
-    })
+
+
     
+    app.post('/newCaption', (req, res) => {
+        db.Posts.findAll({
+            include: [db.Captions]
+        })
+            .then(posts => {
+                res.render('newCaption', {
+                    posts
+                });
+                console.log(posts);
+            });
+        });
+
+
+
+
+
+
+
  
 
   //post request to send images to client webpage
