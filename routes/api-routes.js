@@ -13,7 +13,7 @@ module.exports = function (app) {
     })
 
 
-
+    // CREATE User Route
     app.post("/api/register", function (req, res) {
         console.log(req.body)
         // Bring in the reqs so that we can do some checks here (we could move this to another file later)
@@ -21,7 +21,7 @@ module.exports = function (app) {
         let errors = [];
         // Check that fields are filled
         if (!username || !password || !password2) {
-            errors.push({ msg: 'please fill in all fields' })
+            errors.push( {msg: 'Please fill in all fields'} )
         };
         // Check that password match
         if (password !== password2) {
@@ -35,9 +35,8 @@ module.exports = function (app) {
         // This is useless for now, but we can add a partials folder with an 'errors' file inside and call that on the register page
         // We can pass the object from this res.render to show those error messages above on the page when a user makes an error
         if (errors.length > 0) {
-            res.render("register", {
-                errors,
-                username
+            res.render("error", {
+                errors
             });
             // Otherwise log success and create a new row on the users table
         } else {
@@ -51,9 +50,8 @@ module.exports = function (app) {
                     // If the username exists, let the user know
                     // Just like above, this won't work without a partials folder and errors file
                     errors.push({ msg: 'This username already exists' });
-                    res.render("register", {
-                        errors,
-                        username
+                    res.render("error", {
+                        errors
                     })
                 }
                 else {
@@ -77,7 +75,7 @@ module.exports = function (app) {
             })
         }
     });
-
+    // Login authentication
     app.post("/api/login", function (req, res, next) {
         passport.authenticate('local', {
             successRedirect: '/',
@@ -85,12 +83,7 @@ module.exports = function (app) {
         })(req, res, next)
     });
 
-    app.post("api/newPost", function (req, res) {
-        console.log(req.body)
-
-    });
-
-    // Update Passwords Route
+    // UPDATE Passwords Route
     app.put("/api/users", function (req, res) {
         // Password encryption
         // This generates an encrytion 'salt' whatever that means
@@ -113,48 +106,35 @@ module.exports = function (app) {
             })
         })
     })
-    //page for user to upload images
-    app.get('/newPost', (req,res) =>{
-    res.render('newPost', {
-  
-    })
 
-    
-  })
-
-  //post request to send images to client webpage
+    // CREATE post route
+    // POST request to send images to client webpage
     app.post('/uploadimage', (req, res) => {
-    upload(req, res, (err) => {
-        if(err){
-            res.render('newPost', {
-               msg: err 
-            });
-        } else {
-            if(req.file == undefined){
+        upload(req, res, (err) => {
+            if (err) {
                 res.render('newPost', {
-                    msg: 'Error: No File Selected!'
-                }); 
-            }else {
-                res.render('newPost', {
-                    msg: 'File Uploaded!',
-                    file: `/assets/images/${req.file.filename}`
+                    msg: err
                 });
+            } else {
+                if (req.file == undefined) {
+                    res.render('newPost', {
+                        msg: 'Error: No File Selected!'
+                    });
+                } else {
+                    res.render('newPost', {
+                        msg: 'File Uploaded!',
+                        file: `/assets/images/${req.file.filename}`
+                    });
+                }
             }
-        }
         });
-     });
+    });
 
 }
 
 
 
 // Still need:
-
-
-
-// Create/Update Posts Routes
-// db.Posts.create post  ---- so users can create post
-
 
 
 // Create/Update Captions Routes

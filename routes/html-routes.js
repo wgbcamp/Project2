@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login")
   })
-
+  // READ users route
   // Account page will render a single user's profile
   app.get("/account/:username", function (req, res) {
     db.Users.findAll({
@@ -58,8 +58,8 @@ module.exports = function (app) {
   });
 
   // Posts page will render all posts, joins captions 
-  app.get("/", ensureAuthenticated, function (req, res) {
-    console.log('homepage loaded for ' + req.user.username)
+  app.get("/", function (req, res) {
+    // console.log('homepage loaded for ' + req.user.username)
     db.Posts.findAll({
       include: [db.Captions]
     })
@@ -74,9 +74,9 @@ module.exports = function (app) {
 
   // Welcome page will be a homepage with a login button
   app.get("/welcome", function (req, res) {
-    res.render("welcome")
+    console.log(req.body)
+    res.render("/")
   });
 
+
 }
-
-
