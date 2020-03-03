@@ -21,17 +21,17 @@ module.exports = function (app) {
       },
       include: [{
         model: db.Posts,
-        required: true,
+        required: false,
         include: [{
           model: db.Captions,
-          required: true,
+          required: false,
         }]
-      }, 
+      },
       db.Captions,
-      db.Votes] 
-    }).then(function(user) {
+      db.Votes]
+    }).then(function ( user ) {
       // Render the 'account' view with the single user passed in
-      console.log(user)
+      console.log( user )
       if (user.length < 1) {
         res.redirect("/")
       } else res.render("account", { user })
@@ -69,7 +69,6 @@ module.exports = function (app) {
       .then(posts => {
         // Render the 'allPosts' view with posts+captions passed in as an object (handlebars reads the object/keys)
         res.render("index", { posts });
-        console.log(posts)
         // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
         // but the actual object can just be "posts"
       });
@@ -80,7 +79,7 @@ module.exports = function (app) {
     res.render("newPassword")
   });
 
-  
+
 
 
 }

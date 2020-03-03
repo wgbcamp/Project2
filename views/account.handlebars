@@ -17,7 +17,7 @@
         </div>
         <!-- Container holds all posts -->
         <div class="container">
-
+            {{#if Posts}}
             {{#each Posts}}
             <!-- Each post starts here -->
             <div class="row mb-4">
@@ -68,6 +68,7 @@
 
             <!-- ^ Each post ends ^ -->
             {{/each}}
+            {{/if}}
         </div>
     </div>
 
@@ -108,10 +109,6 @@
     </div>
 
 </div>
-
-
-
-
 
 {{/each}}
 {{!-- ^ Each user ends ^ --}}
