@@ -31,7 +31,7 @@ module.exports = function (app) {
       db.Votes] 
     }).then(function(user) {
       // Render the 'account' view with the single user passed in
-      console.log( user )
+      console.log(user)
       if (user.length < 1) {
         res.redirect("/")
       } else res.render("account", { user })
@@ -39,8 +39,8 @@ module.exports = function (app) {
   });
 
   // New Post Page
-  app.get("/newPost", function (req, res) {
-    res.render("newPost")
+  app.get("/newImg", function (req, res) {
+    res.render("newImg")
   });
 
   // Page to view a single post
@@ -61,7 +61,10 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     // console.log('homepage loaded for ' + req.user.username)
     db.Posts.findAll({
-      include: [db.Captions]
+      include: [db.Captions],
+      order: [
+        ['id', 'DESC'],
+      ]
     })
       .then(posts => {
         // Render the 'allPosts' view with posts+captions passed in as an object (handlebars reads the object/keys)
@@ -73,10 +76,11 @@ module.exports = function (app) {
   });
 
   // Welcome page will be a homepage with a login button
-  app.get("/welcome", function (req, res) {
-    console.log(req.body)
-    res.render("/")
+  app.get("/newPassword", function (req, res) {
+    res.render("newPassword")
   });
+
+  
 
 
 }

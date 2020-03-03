@@ -1,0 +1,24 @@
+{{!-- <!-- Page Title --> --}}
+<div class="text-body text-center mt-3 pt-2">
+    <div class="card-header" style="width: 39%; position: relative; right: 50px;">
+        <h6 class="mt-1">New Post</h6>
+    </div>
+</div>
+
+{{!-- New Post Form --}}
+<div class="container text-center login-form py-2 mt-2" style="width: 40%;">
+    <div class="row text-center">
+        <h6 class="mt-1">Select an image to upload</h6>
+    </div>
+    <form action="/uploadimage" method="POST" enctype="multipart/form-data">
+        <div class="file-field input-field ml-5">
+            <div class="btn grey">
+                <input name="myImage" type="file">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="hidden">
+            </div>
+        </div>
+        <button type="submit" class="btn login-btn my-2 mx-auto text-white">Submit</button>
+    </form>
+</div>

@@ -42,7 +42,6 @@ function checkFileType(file, cb){
   }
 }
 
-
 // Sets up the Express App
 const app = express();
 
@@ -90,50 +89,3 @@ db.sequelize.sync({ force: false }).then(function() {
     });
   });
   
-<<<<<<< HEAD
-
-/*
-
-
-// ------------------------------------------------------WARREN---
-
-// */
-
-
-// // Init app
-// // const app = express(); already done
-
-// //EJS
-// // app.set('view engine', 'ejs'); need to use handlebars
-
-// // Public Folder
-// app.use(express.static('./public'));
-
-// app.get('/', (req, res) => res.render('index'));
-
-// app.post('/upload', (req, res) => {
-//   upload(req, res, (err) => {
-//       if(err){
-//           res.render('index', {
-//              msg: err 
-//           });
-//       } else {
-//           if(req.file == undefined){
-//               res.render('index', {
-//                   msg: 'Error: No File Selected!'
-//               }); 
-//           }else {
-//               res.render('index', {
-//                   msg: 'File Uploaded!',
-//                   file: `uploads/${req.file.filename}`
-//               });
-//           }
-//       }
-//   });
-// });
-
-// const port = 3000;
-
-// app.listen(port, () => console.log('Server started on port ' + port));
-=======
->>>>>>> 2a2cebaa3ed25f394b747a4b22ad9210d2370a2b

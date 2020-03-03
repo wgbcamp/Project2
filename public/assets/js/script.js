@@ -10,21 +10,38 @@ $('#register-button').click(function (e) {
     location.href = "/register"
 });
 
+$('#update-password').click(function (e) { 
+  e.preventDefault();
+  location.href = "/newPassword"
+});
+
 $('#newPassword').click(function() {
 
   // make a newPassword object
   var newPassObj = {
     newPassword: $("#newPass").val().trim(),
   };
-console.log(newPassObj)
   // send an AJAX Put-request with jQuery
   $.ajax({
     method: "PUT",
     url: "/api/users",
     data: newPassObj
   }).then(function() {
-    console.log('updated');
-    location.href = "/api/acctredirect"
-  });
+    setTimeout(function() {
+    location.href = "/api/acctredirect", 5000
+  })
+})
 
 })
+
+
+$('.delete-something-button').click(function (e) { 
+  e.preventDefault();
+  let id = $(this).attr("id");
+  $.ajax({
+    method: "DELETE",
+    url: "/api/" + id
+  }).then(
+    location.href = "/api/acctredirect"
+  );
+});

@@ -1,44 +1,21 @@
-{{!-- Easy simple form with post method pointing to the api route --}}
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<div class="contain">
-        <h1>Submit a new Post</h1>
-        <form action="/uploadimage" method="POST" enctype="multipart/form-data">
-            <div class="file-field input-field">
-              <div class="btn grey">
-                <span>File</span>
-                <input name="myImage" type="file">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
-            <button type="submit" class="btn">Submit</button>
-          </form>
-          <br>
-          <img src="{{{file}}}" alt="" style="width:100%"/>
+{{!-- <!-- Page Title --> --}}
+<div class="text-body text-center mt-3 pt-2">
+    <div class="card-header" style="width: 39%; position: relative; right: 50px;">
+        <h6 class="mt-1">New Post</h6>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-
-
-
-
-
-
-{{!-- <h1 class="text-center mt-5">Submit a new Post</h1>
-<div class="container border rounded py-2 mt-2" style="width: 25%;">
+</div>
+{{!-- New Post Form --}}
+<div class="container login-form py-2 mt-2 text-center" style="width: 40%;">
     <form action="api/newPost" method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+        <div class="form-group text-center">
+            <label for="title">Enter a Title for your post</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+        <div class="text-center">
+            <input class="hidden" name="image" id="image" type="hidden" value={{{file}}} readonly>
+            <img src="{{{file}}}" alt="" style="height: 75%; width: 90%" />
         </div>
-        <button type="submit" class="btn btn-dark mb-2" id="login-button">Login</button>
-        <button type="button" class="btn btn-light mb-2 ml-2" id="register-button">Register</button>
+            <button type="submit" class="btn login-btn my-2 text-white">Submit</button>
+            
     </form>
-</div> --}}
+</div>

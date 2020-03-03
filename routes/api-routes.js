@@ -23,7 +23,7 @@ module.exports = function (app) {
         let errors = [];
         // Check that fields are filled
         if (!username || !password || !password2) {
-            errors.push( {msg: 'Please fill in all fields'} )
+            errors.push({ msg: 'Please fill in all fields' })
         };
         // Check that password match
         if (password !== password2) {
@@ -77,6 +77,7 @@ module.exports = function (app) {
             })
         }
     });
+    
     // Login authentication
     app.post("/api/login", function (req, res, next) {
         passport.authenticate('local', {
@@ -85,31 +86,7 @@ module.exports = function (app) {
         })(req, res, next)
     });
 
-    // UPDATE Passwords Route
-    app.put("/api/users", function (req, res) {
-        // Password encryption
-        // This generates an encrytion 'salt' whatever that means
-        bcrypt.genSalt(10, function (err, salt) {
-            // This uses that 'salt' and creates a hashed password
-            bcrypt.hash(req.body.newPassword, salt, function (err, hash) {
-                if (err) throw err;
-                // Post to the Users table and use the hash as the password
-                db.Users.update({
-                    password: hash
-                }, {
-                    where: {
-                        username: req.user.username
-                    }
-                },
-                ).then(function () {
-                    // Go back to account page
-                    res.redirect("/api/acctredirect")
-                })
-            })
-        })
-    })
 
-    // CREATE post route
     // POST request to send images to client webpage
     app.post('/uploadimage', (req, res) => {
         upload(req, res, (err) => {
@@ -128,26 +105,14 @@ module.exports = function (app) {
                         file: `/assets/images/${req.file.filename}`
                     });
                 }
-  
-    //page for users to upload captions after clicking on a post
-    app.post('/newCaption', (req, res) => {
-        db.Posts.findAll({
-            include: [db.Captions]
-        })
-            .then(posts => {
-                res.render('newCaption', {
-                    posts
-                });
-                console.log(posts);
-            });
-        });
+
 
             }
         });
     });
 
-     //allows user to add title to post and sends post info to database
-     app.post('/uploadtitle', (req, res) => {     
+    // POST Posts route
+    app.post('/api/newPost', (req, res) => {
         db.Posts.create({
             title: req.body.title,
             image: req.body.image,
@@ -155,33 +120,84 @@ module.exports = function (app) {
             author: req.user.username,
             UserId: req.user.id
         })
-        .then(function () {
-        // Send the user back to main page
-        res.redirect("/")
-    })
-     });
+            .then(function () {
+                // Send the user back to main page
+                res.redirect("/")
+            })
+    });
 
-     //allows posting of captions to database
-    app.post('/postcaption', (req, res) => {
+    // POST Captions route
+    app.post('/api/newCaption/:id', (req, res) => {
         db.Captions.create({
             text: req.body.text,
             noOfVotes: 0,
             author: req.user.username,
-            PostId: "notsureyet",
+            PostId: req.params.id,
             UserId: req.user.id
         })
+        .then(function () {
+            res.redirect("/")
+        })
     })
+
+
+      // UPDATE Passwords Route
+      app.put("/api/users", function (req, res) {
+        // Password encryption
+        // This generates an encrytion 'salt' whatever that means
+        bcrypt.genSalt(10, function (err, salt) {
+            // This uses that 'salt' and creates a hashed password
+            bcrypt.hash(req.body.newPassword, salt, function (err, hash) {
+                if (err) throw err;
+                // Post to the Users table and use the hash as the password
+                db.Users.update({
+                    password: hash
+                }, {
+                    where: {
+                        username: req.user.username
+                    }
+                },
+                ).then(function () {
+                    // Go back to account page
+                    console.log("SUCCESS")
+                    res.sendStatus(303)
+            })
+            })
+        })
+    })
+
+
+    // DELETE Captions route
+    app.delete('/api/captions/:id', function (req, res) {
+        db.Captions.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function () {
+            
+            res.redirect(303, "/api/acctredirect")
+        })
+    })
+
+    // DELETE Posts route
+    app.delete('/api/posts/:id', function (req, res) {
+        db.Posts.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function () {
+            
+            res.redirect(303, "/api/acctredirect")
+        })
+    })
+
 }
-    
 
-// Still need:
-
-
-// Create/Update Captions Routes
-// db.Captions.create caption  ---- so users can create new captions
+// Future: 
 
 // db.Captions.update noOfVotes  ---- to update votes when a user votes on a caption
-
 
 
 // Create/Update Votes Routes
@@ -190,10 +206,5 @@ module.exports = function (app) {
 // db.Votes.update (just update. it has foreign keys that will change without any extra code from us) ---- if a user votes on a different caption
 
 
-
 // Delete Routes
 // db.Users.destroy user 
-
-// db.Posts.destroy post
-
-// db.Captions.destroy captions
