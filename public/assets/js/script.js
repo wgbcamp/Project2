@@ -59,3 +59,15 @@ $('.delete-account').click(function (e) {
 })
   }
 });
+
+$(".upvote-button").click(function (e) { 
+  e.preventDefault();
+  let upvoteButtonID = $(this).attr("data-id");
+
+  let upvotes = $("#upvotenumber-" + upvoteButtonID).html()
+  upvotes++
+  $("#upvotenumber-" + upvoteButtonID).html(upvotes);
+});
+
+
+
