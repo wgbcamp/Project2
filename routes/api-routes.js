@@ -2,6 +2,8 @@ var db = require("../models")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const upload = require('../server')
+const { ensureAuthenticated } = require('../config/auth')
+
 
 //saving image path for uploading caption value
 
@@ -28,7 +30,7 @@ module.exports = function (app) {
         };
         // Check that password match
         if (password !== password2) {
-            errors.push({ msg: 'Password must match!' })
+            errors.push({ msg: 'Passwords must match!' })
         };
         // Check password length
         if (password.length < 6) {
@@ -89,7 +91,7 @@ module.exports = function (app) {
 
 
     // POST request to send images to client webpage
-    app.post('/uploadimage', (req, res) => {
+    app.post('/uploadimage', ensureAuthenticated, (req, res) => {
         upload(req, res, (err) => {
             if (err) {
                 res.render('newPost', {
@@ -113,7 +115,7 @@ module.exports = function (app) {
     });
 
     // POST Posts route
-    app.post('/api/newPost', (req, res) => {
+    app.post('/api/newPost', ensureAuthenticated, (req, res) => {
         db.Posts.create({
             title: req.body.title,
             image: req.body.image,
@@ -128,7 +130,7 @@ module.exports = function (app) {
     });
 
     // POST Captions route
-    app.post('/api/newCaption/:id', (req, res) => {
+    app.post('/api/newCaption/:id', ensureAuthenticated, (req, res) => {
         db.Captions.create({
             text: req.body.text,
             noOfVotes: 0,
@@ -143,7 +145,7 @@ module.exports = function (app) {
 
 
       // UPDATE Passwords Route
-      app.put("/api/users", function (req, res) {
+      app.put("/api/users", ensureAuthenticated, function (req, res) {
         // Password encryption
         // This generates an encrytion 'salt' whatever that means
         bcrypt.genSalt(10, function (err, salt) {
@@ -169,7 +171,7 @@ module.exports = function (app) {
 
 
     // DELETE Captions route
-    app.delete('/api/captions/:id', function (req, res) {
+    app.delete('/api/captions/:id', ensureAuthenticated, function (req, res) {
         db.Captions.destroy({
             where: {
                 id: req.params.id
@@ -182,7 +184,7 @@ module.exports = function (app) {
     })
 
     // DELETE Posts route
-    app.delete('/api/posts/:id', function (req, res) {
+    app.delete('/api/posts/:id', ensureAuthenticated, function (req, res) {
         db.Posts.destroy({
             where: {
                 id: req.params.id

@@ -5,9 +5,10 @@
     </div>
 </div>
 
+{{!-- Errors go here --}}
 {{#if errors}}
 {{#each errors}}
-<div class="container mt-1 text-center bg-warning border-rouded" style="width: 39%; position: relative; right: 50px;">
+<div class="container mt-2 text-center bg-warning border rounded" style="width: 39%; position: relative; right: 50px;">
     <span>{{msg}}</span>
 </div>
 {{/each}}

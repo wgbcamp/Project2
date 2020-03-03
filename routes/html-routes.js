@@ -11,11 +11,11 @@ module.exports = function (app) {
   // Login page
   app.get("/login", function (req, res) {
     res.render("login")
-  })
-  
+  });
+
   // READ users route
   // Account page will render a single user's profile
-  app.get("/account/:username", function (req, res) {
+  app.get("/account/:username", ensureAuthenticated, function (req, res) {
     db.Users.findAll({
       where: {
         username: req.params.username
@@ -40,7 +40,7 @@ module.exports = function (app) {
   });
 
   // New Post Page
-  app.get("/newImg", function (req, res) {
+  app.get("/newImg", ensureAuthenticated, function (req, res) {
     res.render("newImg")
   });
 
@@ -85,7 +85,7 @@ module.exports = function (app) {
     req.logout();
     console.log("User logged out")
     res.redirect("/")
-  })
+  });
 
 
 }
