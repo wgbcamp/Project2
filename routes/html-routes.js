@@ -12,6 +12,7 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login")
   })
+  
   // READ users route
   // Account page will render a single user's profile
   app.get("/account/:username", function (req, res) {
@@ -79,7 +80,12 @@ module.exports = function (app) {
     res.render("newPassword")
   });
 
-
+  // Logout Route
+  app.get("/logout", function(req, res) {
+    req.logout();
+    console.log("User logged out")
+    res.redirect("/")
+  })
 
 
 }

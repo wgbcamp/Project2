@@ -10,9 +10,9 @@ module.exports = function (app) {
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
     // The "Account" link in the navbar uses this route
     app.get("/api/acctredirect", function (req, res) {
-        console.log('redirecting' + req.user.username)
+        if (req.user) {
         res.redirect("/account/" + req.user.username)
-        
+        } else res.redirect("/login")
     })
 
 
