@@ -27,10 +27,8 @@ $('#newPassword').click(function() {
     method: "PUT",
     url: "/api/users",
     data: newPassObj
-  }).then(function() {
-    setTimeout(function() {
-    location.href = "/api/acctredirect", 5000
-  })
+  }).done(function(){
+    location.href = '/api/acctredirect'
 })
 })
 
@@ -41,9 +39,9 @@ $('.delete-something-button').click(function (e) {
   $.ajax({
     method: "DELETE",
     url: "/api/" + id
-  }).then(
-    location.href = "/api/acctredirect"
-  );
+  }).done(function(){
+    location.href = '/../api/acctredirect'
+})
 });
 
 // Delete account button will alert the user then delete the account
@@ -56,8 +54,8 @@ $('.delete-account').click(function (e) {
   $.ajax({
     method: "DELETE",
     url: "/api/users/" + id
-  }).then(
-    location.href = "/api/acctredirect"
-  );
+  }).done(function(){
+    location.href = '/../'
+})
   }
 });

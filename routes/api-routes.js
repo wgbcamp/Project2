@@ -163,10 +163,11 @@ module.exports = function (app) {
                 ).then(function () {
                     // Go back to account page
                     console.log("SUCCESS")
-                    res.sendStatus(303)
-            })
+
+                })
             })
         })
+        res.redirect(204, "/")
     })
 
 
@@ -179,7 +180,7 @@ module.exports = function (app) {
         })
         .then(function () {
             
-            res.redirect(303, "/api/acctredirect")
+            res.redirect(303, "/")
         })
     })
 
@@ -192,7 +193,7 @@ module.exports = function (app) {
         })
         .then(function () {
             
-            res.redirect(303, "/api/acctredirect")
+            res.redirect(303, "/")
         })
     })
 
@@ -205,7 +206,7 @@ module.exports = function (app) {
         })
         .then(function () {
             
-            res.redirect(303, "/api/acctredirect")
+            res.redirect(303, "/")
         })
     })
 
@@ -220,7 +221,3 @@ module.exports = function (app) {
 // db.Votes.create vote  ---- will create a new vote when a user clicks the button
 
 // db.Votes.update (just update. it has foreign keys that will change without any extra code from us) ---- if a user votes on a different caption
-
-
-// Delete Routes
-// db.Users.destroy user 
