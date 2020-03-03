@@ -196,6 +196,19 @@ module.exports = function (app) {
         })
     })
 
+    // DELETE Users route
+    app.delete('/api/users/:id', ensureAuthenticated, function (req, res) {
+        db.Users.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function () {
+            
+            res.redirect(303, "/api/acctredirect")
+        })
+    })
+
 }
 
 // Future: 

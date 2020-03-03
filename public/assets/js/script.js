@@ -10,13 +10,14 @@ $('#register-button').click(function (e) {
     location.href = "/register"
 });
 
+// Update password button redirects to a page for that
 $('#update-password').click(function (e) { 
   e.preventDefault();
   location.href = "/newPassword"
 });
 
+// Submit button on the update password page will make he put request
 $('#newPassword').click(function() {
-
   // make a newPassword object
   var newPassObj = {
     newPassword: $("#newPass").val().trim(),
@@ -31,10 +32,9 @@ $('#newPassword').click(function() {
     location.href = "/api/acctredirect", 5000
   })
 })
-
 })
 
-
+// Delete posts and delete caption buttons will delete the post or caption of the div they're in
 $('.delete-something-button').click(function (e) { 
   e.preventDefault();
   let id = $(this).attr("id");
@@ -44,4 +44,20 @@ $('.delete-something-button').click(function (e) {
   }).then(
     location.href = "/api/acctredirect"
   );
+});
+
+// Delete account button will alert the user then delete the account
+$('.delete-account').click(function (e) { 
+  e.preventDefault();
+  let id = $(this).attr("id");
+  var doubleCheck = confirm("Are you sure you want to delete this account?")
+  if (doubleCheck === true) {
+    console.log('deleting account')
+  $.ajax({
+    method: "DELETE",
+    url: "/api/users/" + id
+  }).then(
+    location.href = "/api/acctredirect"
+  );
+  }
 });

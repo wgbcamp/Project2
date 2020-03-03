@@ -21,12 +21,12 @@ module.exports = function(sequelize, DataTypes) {
         // We're saying that a Caption should belong to 1 post
         Captions.belongsTo(models.Posts, {
           foreignKey: {
-            allowNull: false
+            allowNull: true
           }
         });
         Captions.belongsTo(models.Users, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
         Captions.hasMany(models.Votes, {
