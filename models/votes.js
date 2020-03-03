@@ -13,17 +13,17 @@ module.exports = function(sequelize, DataTypes) {
         // A Vote can't be created without an associated Post due to the foreign key constraint
         Votes.belongsTo(models.Posts, {
           foreignKey: {
-            allowNull: false
+            allowNull: true
           }
         });
         Votes.belongsTo(models.Users,{
             foreignKey:{
-            allowNull: false
+            allowNull: true
             }
         });
         Votes.belongsTo(models.Captions,{
           foreignKey:{
-            allowNull: false
+            allowNull: true
           }
         })
       };

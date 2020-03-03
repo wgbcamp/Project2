@@ -4,9 +4,17 @@
         <h6 class="mt-1">Login</h6>
     </div>
 </div>
+
+{{!-- Errors go here --}}
+{{#if msg}}
+<div class="container mt-3 text-center bg-danger border rounded" style="width: 39%; position: relative; right: 50px;">
+    <span>{{msg}}</span>
+</div>
+{{/if}}
+
 {{!-- Login Form --}}
 <div class="container login-form py-2 mt-2" style="width: 40%;">
-    <form action="api/login" method="POST">
+    <form action="../api/login" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">

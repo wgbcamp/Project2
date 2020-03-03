@@ -11,34 +11,37 @@ module.exports = function (app) {
   // Login page
   app.get("/login", function (req, res) {
     res.render("login")
-  })
+  });
 
+  // READ users route
   // Account page will render a single user's profile
-  app.get("/account/:username", function (req, res) {
+  app.get("/account/:username", ensureAuthenticated, function (req, res) {
     db.Users.findAll({
       where: {
         username: req.params.username
       },
       include: [{
         model: db.Posts,
-        required: true,
+        required: false,
         include: [{
           model: db.Captions,
-          required: true,
+          required: false,
         }]
-      }, 
+      },
       db.Captions,
-      db.Votes] 
-    }).then(user => {
+      db.Votes]
+    }).then(function ( user ) {
       // Render the 'account' view with the single user passed in
-      console.log({ user })
-      res.render("account", { user })
+      console.log( user )
+      if (user.length < 1) {
+        res.redirect("/")
+      } else res.render("account", { user })
     })
   });
 
   // New Post Page
-  app.get("/newPost", function (req, res) {
-    res.render("newPost")
+  app.get("/newImg", ensureAuthenticated, function (req, res) {
+    res.render("newImg")
   });
 
   // Page to view a single post
@@ -56,23 +59,33 @@ module.exports = function (app) {
   });
 
   // Posts page will render all posts, joins captions 
-  app.get("/", ensureAuthenticated, function (req, res) {
-    console.log('homepage loaded for ' + req.user.username)
+  app.get("/", function (req, res) {
+    // console.log('homepage loaded for ' + req.user.username)
     db.Posts.findAll({
-      include: [db.Captions]
+      include: [db.Captions],
+      order: [
+        ['id', 'DESC'],
+      ]
     })
       .then(posts => {
         // Render the 'allPosts' view with posts+captions passed in as an object (handlebars reads the object/keys)
         res.render("index", { posts });
-        console.log(posts)
         // Handlebars keys (on the html page) have to be written as "dataValues.title" or "dataValues.author" 
         // but the actual object can just be "posts"
       });
   });
 
   // Welcome page will be a homepage with a login button
-  app.get("/welcome", function (req, res) {
-    res.render("welcome")
+  app.get("/newPassword", function (req, res) {
+    res.render("newPassword")
   });
+
+  // Logout Route
+  app.get("/logout", function(req, res) {
+    req.logout();
+    console.log("User logged out")
+    res.redirect("/")
+  });
+
 
 }

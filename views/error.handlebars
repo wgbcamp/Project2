@@ -5,9 +5,18 @@
     </div>
 </div>
 
+{{!-- Errors go here --}}
+{{#if errors}}
+{{#each errors}}
+<div class="container mt-2 text-center bg-warning border rounded" style="width: 39%; position: relative; right: 50px;">
+    <span>{{msg}}</span>
+</div>
+{{/each}}
+{{/if}}
+
 {{!-- Register form --}}
 <div class="container login-form border py-2 mt-1" style="width: 40%;">
-    <form action="api/register" method="POST">
+    <form action="register" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
@@ -25,3 +34,4 @@
 </div>
 
 
+<script src="../assets/js/script.js"></script>

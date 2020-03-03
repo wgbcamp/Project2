@@ -42,7 +42,6 @@ function checkFileType(file, cb){
   }
 }
 
-
 // Sets up the Express App
 const app = express();
 

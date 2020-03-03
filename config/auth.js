@@ -3,6 +3,6 @@ module.exports = {
         if(req.isAuthenticated()) {
             return next();
         }
-        else { res.redirect('/login')} 
+        else { res.render("notloggedin", { msg: "You must be logged in to do that"}) } 
     }
 }
