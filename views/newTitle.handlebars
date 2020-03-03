@@ -1,0 +1,20 @@
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<div class="contain">
+        <h1>Submit a title to your image</h1>
+        <form action="/uploadtitle" method="POST">
+            <div class="file-field input-field">
+              <div class="file-path-wrapper">
+                <input name="title" id="title" type="text">
+                <input name="image" id="image" type="text" value={{{file}}} readonly>
+              </div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+          <h3>{{{msg}}}</h3>
+          <br>
+          <img src="{{{file}}}" alt="" style="width:100%"/>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+

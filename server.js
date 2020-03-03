@@ -43,7 +43,6 @@ function checkFileType(file, cb){
 }
 
 
-
 // Sets up the Express App
 const app = express();
 
@@ -91,6 +90,7 @@ db.sequelize.sync({ force: false }).then(function() {
     });
   });
   
+<<<<<<< HEAD
 
 /*
 
@@ -135,3 +135,5 @@ db.sequelize.sync({ force: false }).then(function() {
 // const port = 3000;
 
 // app.listen(port, () => console.log('Server started on port ' + port));
+=======
+>>>>>>> 2a2cebaa3ed25f394b747a4b22ad9210d2370a2b

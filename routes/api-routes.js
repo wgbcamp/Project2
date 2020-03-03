@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs")
 const passport = require("passport")
 const upload = require('../server')
 
+//saving image path for uploading caption value
+
 module.exports = function (app) {
 
     // This will add the currently logged in user's username to the account/{username} URL and redirect them to it
@@ -126,13 +128,51 @@ module.exports = function (app) {
                         file: `/assets/images/${req.file.filename}`
                     });
                 }
+  
+    //page for users to upload captions after clicking on a post
+    app.post('/newCaption', (req, res) => {
+        db.Posts.findAll({
+            include: [db.Captions]
+        })
+            .then(posts => {
+                res.render('newCaption', {
+                    posts
+                });
+                console.log(posts);
+            });
+        });
+
             }
         });
     });
 
+     //allows user to add title to post and sends post info to database
+     app.post('/uploadtitle', (req, res) => {     
+        db.Posts.create({
+            title: req.body.title,
+            image: req.body.image,
+            totalVotes: 0,
+            author: req.user.username,
+            UserId: req.user.id
+        })
+        .then(function () {
+        // Send the user back to main page
+        res.redirect("/")
+    })
+     });
+
+     //allows posting of captions to database
+    app.post('/postcaption', (req, res) => {
+        db.Captions.create({
+            text: req.body.text,
+            noOfVotes: 0,
+            author: req.user.username,
+            PostId: "notsureyet",
+            UserId: req.user.id
+        })
+    })
 }
-
-
+    
 
 // Still need:
 
